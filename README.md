@@ -13,7 +13,7 @@
 
 ## Live Demo
 
-[Live demo link](https://kruger-star-playground-dc.netlify.app/)
+[Live demo link](https://krugerstar-todo-dc.netlify.app/)
 
 ## Run it locally
 
