@@ -14,7 +14,9 @@ body{
   margin-top: 30px;
 }
 .contenedorTodo{
-  margin-top: 20px;
+  margin-top: 15px;
+  padding: 10px 0;
+  background-color: whitesmoke;
 }
 .contenedorBotones{
   display: flex;
@@ -23,9 +25,17 @@ body{
 .contenedorBotones button{
   margin-left: 15px;
 }
+.check{
+  margin-left: 15px;
+  margin-top: 10px;
+}
 .todoNombre{
   text-transform: capitalize;
-  font-weight: 400;
+  font-weight: 500;
   margin: 10px 0;
   font-family: 'Poppins', sans-serif;
+}
+.isCompleted{
+  text-decoration: line-through;
+  color: rgb(118, 117, 117);
 }

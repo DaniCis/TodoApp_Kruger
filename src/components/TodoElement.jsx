@@ -5,34 +5,41 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
-const TodoElement = ({todo, onUpdate, onDelete}) => {
-    const [edit,setEdit] = useState(false)
+const TodoElement = ({todo, onUpdate, onDelete, onComplete}) => {
+    const [isEdit,setIsEdit] = useState(false)
     const [newtask, setNewtask] = useState(todo.name)
+    const [isDisabled,setIsDisabled] = useState(todo.completed)
 
     const update = () => {
         onUpdate(todo.id, newtask)
-        setEdit(false)
+        setIsEdit(false)
+    }
+    const complete = () =>{
+        onComplete(todo.id)
+        setIsDisabled(!isDisabled)
     }
 
     return(
         <Container className='contenedorTodo'>
-            { edit ? 
+            { isEdit ? 
                 <Row>
                     <Form onSubmit={update}>
                         <Col className='contenedorBotones'>
                             <Form.Control onChange={(e) => setNewtask(e.target.value)} type='text' value={newtask}/>
                             <Button variant='warning' onClick={update}>Update</Button>
+                            <Button onClick={() => setIsEdit(false)} variant='danger'>Cancel</Button>
                         </Col>
                     </Form>
                 </Row>
                 : (
                     <Row>
                         <Col>
-                            <p className='todoNombre'>{todo.name}</p>
+                            <p className={`todoNombre ${(todo.completed)? 'isCompleted':''}`}>{todo.name}</p>
                         </Col>
                         <Col className='contenedorBotones'>
-                            <Button onClick={() => setEdit(true)}>Edit</Button>
-                            <Button onClick={() => (onDelete(todo.id))} variant='danger'>Delete</Button>
+                            <Button onClick={() => setIsEdit(true)} disabled={isDisabled}>Edit</Button> 
+                            <Button onClick={() => onDelete(todo.id)} variant='danger'>Delete</Button>
+                            <Form.Check onClick={complete} className='check' checked={todo.completed}/>
                         </Col>
                     </Row>
                 )

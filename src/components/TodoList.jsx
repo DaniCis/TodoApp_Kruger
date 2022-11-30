@@ -15,6 +15,7 @@ const TodoList = () => {
         const newTodo = {
             id: crypto.randomUUID(),
             name: task,
+            completed:false,
         }
         setTodos([...todos,newTodo])
         setTask('')
@@ -28,6 +29,12 @@ const TodoList = () => {
     const deleteTodo = (id) =>{
         const nuevo = todos.filter( x => x.id !== id)
         setTodos(nuevo)
+    }
+    const completeTodo = (id) =>{
+        const temp = [...todos]
+        const todo = temp.find(x => x.id === id)
+        todo.completed = !todo.completed
+        setTodos(temp)
     }
 
     return(
@@ -50,7 +57,7 @@ const TodoList = () => {
                 {todos.map(todo => (
                     <Row key={todo.id}>
                         <Col xs={{span:10,offset:1}} md={{ span: 8, offset: 3 }} lg={{span:4, offset:4}}>
-                            <TodoElement todo={todo} key={todo.id}  onUpdate={updateTodo} onDelete={deleteTodo} /> 
+                            <TodoElement todo={todo} key={todo.id} onUpdate={updateTodo} onDelete={deleteTodo} onComplete={completeTodo} /> 
                         </Col>
                     </Row>
                 ))}
