@@ -14,21 +14,23 @@ const TodoElement = ({todo, onUpdate, onDelete}) => {
         setEdit(false)
     }
 
-
     return(
-        <Container>
+        <Container className='contenedorTodo'>
             { edit ? 
                 <Row>
                     <Form onSubmit={update}>
-                        <Col>
+                        <Col className='contenedorBotones'>
                             <Form.Control onChange={(e) => setNewtask(e.target.value)} type='text' value={newtask}/>
-                            <Button onClick={update}>Update</Button>
+                            <Button variant='warning' onClick={update}>Update</Button>
                         </Col>
                     </Form>
                 </Row>
                 : (
                     <Row>
-                        <Col>{todo.name}
+                        <Col>
+                            <p className='todoNombre'>{todo.name}</p>
+                        </Col>
+                        <Col className='contenedorBotones'>
                             <Button onClick={() => setEdit(true)}>Edit</Button>
                             <Button onClick={() => (onDelete(todo.id))} variant='danger'>Delete</Button>
                         </Col>

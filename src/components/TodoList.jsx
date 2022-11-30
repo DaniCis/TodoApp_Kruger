@@ -31,20 +31,30 @@ const TodoList = () => {
     }
 
     return(
-        <Container>
+        <Container className="contenedorPrincipal">
+            <Row>
+                <Col xs={{span:6,offset:3}} md={{ span: 4, offset: 6 }} lg={{span:4, offset:5}}>
+                    <p className="todoTitle">TO-DO APP</p>
+                </Col>
+            </Row>
             <Row>
                 <Form onSubmit={agregarTodo}>
-                    <Col>
+                    <Col className="contenedorBotones" 
+                        xs={{span:10,offset:1}} md={{ span: 8, offset: 3 }} lg={{span:4, offset:4}}>
                         <Form.Control onChange={(e) => (setTask(e.target.value))} type="text" value={task} />
-                        <Button onClick={agregarTodo} variant="success" type='submit'>Create Todo</Button>
+                        <Button  onClick={agregarTodo} variant="success" type='submit'>Create</Button>
                     </Col>
                 </Form>
             </Row>
-            {todos.map(todo => (
-                <Row>
-                    <TodoElement todo={todo} key={todo.id} onUpdate={updateTodo} onDelete={deleteTodo} /> 
-                </Row>
-            ))}
+            <Container className="contenedorTodos">
+                {todos.map(todo => (
+                    <Row key={todo.id}>
+                        <Col xs={{span:10,offset:1}} md={{ span: 8, offset: 3 }} lg={{span:4, offset:4}}>
+                            <TodoElement todo={todo} key={todo.id}  onUpdate={updateTodo} onDelete={deleteTodo} /> 
+                        </Col>
+                    </Row>
+                ))}
+            </Container>
         </Container>
     )
 }

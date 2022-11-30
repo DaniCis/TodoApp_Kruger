@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body{
+  background-color: rgb(234, 234, 234)!important;
+}
+.contenedorPrincipal{
+  margin-top: 40px;
+}
+.todoTitle{
+  font-weight: 800;
+  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+.contenedorTodos{
+  margin-top: 30px;
+}
+.contenedorTodo{
+  margin-top: 20px;
+}
+.contenedorBotones{
+  display: flex;
+  justify-content: flex-end;
+}
+.contenedorBotones button{
+  margin-left: 15px;
+}
+.todoNombre{
+  text-transform: capitalize;
+  font-weight: 400;
+  margin: 10px 0;
+  font-family: 'Poppins', sans-serif;
+}
